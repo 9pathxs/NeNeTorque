@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marcações — NeNeTorque, Oficina Auto em Gondomar</title>
+<meta name="description" content="Marque a sua reparação sem telefonar. Preencha os dados da viatura e do sintoma e enviamos o pedido já escrito.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap bar-top">
+    <a class="brand" href="index.html">NeNe<span>Torque</span></a>
+    <a class="bar-cta" href="tel:+351934186655">Ligar 934 186 655</a>
+  </div>
+  <nav class="nav" aria-label="Menu principal">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="servicos.html">Serviços</a></li>
+      <li><a href="marcacoes.html" aria-current="page">Marcações</a></li>
+      <li><a href="quem-somos.html">Quem somos</a></li>
+      <li><a href="index.html#contactos">Contactos</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="phead">
+  <div class="wrap">
+    <span class="eyebrow">Marcações</span>
+    <h1 style="font-size:clamp(1.9rem,6vw,3.2rem)">Marque sem telefonar</h1>
+    <p class="lede">Preencha os campos e enviamos o pedido já escrito — só tem de carregar em enviar. Ligamos-lhe de volta para confirmar o dia.</p>
+  </div>
+</div>
+
+<section class="book">
+  <div class="wrap book-grid">
+    <div>
+      <span class="eyebrow">O que acontece a seguir</span>
+      <h2 style="font-size:clamp(1.4rem,4vw,1.9rem)">Sem compromisso</h2>
+      <p style="opacity:.85;font-size:.98rem;margin-top:10px">Recebemos o pedido, vemos se é caso para diagnóstico ou se dá para resolver logo, e ligamos-lhe com uma data. Nada é marcado até falar connosco.</p>
+
+      <div class="hours" style="border-top:1px solid var(--line-dark);padding-top:18px;margin-top:26px">
+        <div style="border-color:var(--line-dark)"><span>Segunda a sábado</span><span>9h — 21h</span></div>
+        <div style="border-color:var(--line-dark)"><span>Domingo</span><span>Encerrado</span></div>
+      </div>
+
+      <p style="margin-top:22px;font-size:.92rem;opacity:.72">Respondemos assim que estivermos livres do carro que temos nas mãos. Se for urgente, ligue para <a href="tel:+351934186655" style="color:var(--amber)">934 186 655</a>.</p>
+    </div>
+
+    <div>
+      <div class="two">
+        <div class="field">
+          <label for="f-nome">Nome</label>
+          <input id="f-nome" type="text" placeholder="Como se chama">
+        </div>
+        <div class="field">
+          <label for="f-tel">Telefone</label>
+          <input id="f-tel" type="tel" placeholder="Para lhe ligarmos de volta">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-viatura">Viatura</label>
+        <input id="f-viatura" type="text" placeholder="Marca, modelo e ano — ex: Renault Clio 2016">
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label for="f-servico">Serviço</label>
+          <select id="f-servico">
+            <option>Diagnóstico de avarias</option>
+            <option>Revisão ou mecânica geral</option>
+            <option>Eletricidade e eletrónica</option>
+            <option>Travões</option>
+            <option>Pneus e equilibragem</option>
+            <option>Distribuição</option>
+            <option>Não sei — preciso que vejam</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-disp">Quando lhe dá jeito</label>
+          <input id="f-disp" type="text" placeholder="Ex: sábado de manhã">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-desc">O que se passa com o carro</label>
+        <textarea id="f-desc" placeholder="Descreva o sintoma: quando acontece, que ruído faz, se há luzes acesas. Quanto mais detalhe, melhor preparamos a marcação."></textarea>
+      </div>
+
+      <div class="field" style="margin-bottom:8px">
+        <label for="f-recolha">Precisa de recolha da viatura?</label>
+        <select id="f-recolha">
+          <option>Não, levo o carro à oficina</option>
+          <option>Sim, com recolha e entrega</option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%;margin-top:14px" onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
+      <div class="book-err" id="f-err" hidden></div>
+      <p class="book-alt">Prefere email? <a href="mailto:[[EMAIL]]" style="color:var(--amber)">[[EMAIL]]</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>NeNeTorque — Oficina Auto · NIF 248555855</span>
+    <span><a href="https://www.livroreclamacoes.pt/inicio">Livro de Reclamações Eletrónico</a></span>
+  </div>
+</footer>
+
+<nav class="callbar" aria-label="Contacto rápido">
+  <a class="c1" href="tel:+351934186655">Ligar</a>
+  <a class="c2" href="index.html">Início</a>
+</nav>
+
+<script>
+function enviarPedido(){
+  var v = function(id){ return document.getElementById(id).value.trim(); };
+  var err = document.getElementById('f-err');
+  var nome = v('f-nome'), tel = v('f-tel'), viatura = v('f-viatura');
+
+  if(!nome || !tel || !viatura){
+    err.textContent = 'Falta o nome, o telefone ou a viatura.';
+    err.hidden = false;
+    return;
+  }
+  err.hidden = true;
+
+  var txt =
+    'Pedido de marcação — NeNeTorque\n\n' +
+    'Nome: ' + nome + '\n' +
+    'Telefone: ' + tel + '\n' +
+    'Viatura: ' + viatura + '\n' +
+    'Serviço: ' + v('f-servico') + '\n' +
+    'Disponibilidade: ' + (v('f-disp') || '—') + '\n' +
+    'Recolha: ' + v('f-recolha') + '\n\n' +
+    'Descrição:\n' + (v('f-desc') || '—');
+
+  window.open('https://wa.me/351934186655?text=' + encodeURIComponent(txt), '_blank');
+}
+</script>
+
+</body>
+</html>
