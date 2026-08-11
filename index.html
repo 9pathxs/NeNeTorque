@@ -3,8 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NeNeTorque — Oficina Auto | Diagnóstico e reparação em Gondomar</title>
+<title>NeNeTorque Oficina Auto | Diagnóstico e reparação em Gondomar</title>
 <meta name="description" content="Oficina auto em Gondomar. Diagnóstico feito antes de trocar peças. Orçamento escrito antes de qualquer trabalho.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NeNeTorque Oficina Auto">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="NeNeTorque Oficina Auto">
+<meta property="og:description" content="Oficina auto em Gondomar. Diagnóstico feito antes de trocar peças, orçamento escrito antes de qualquer trabalho.">
+<meta property="og:url" content="[[SITE_URL]]">
+<meta property="og:image" content="[[SITE_URL]]/preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -40,12 +49,16 @@
       </div>
     </div>
 
-    <div class="obd" aria-label="Exemplo de leitura de diagnóstico">
-      <div class="obd-head"><span class="dot"></span> Leitura OBD — exemplo</div>
-      <div class="obd-code">P0301 <span class="obd-raw">Cylinder 1 Misfire Detected</span></div>
-      <div class="obd-arrow">↓</div>
-      <div class="obd-plain">Falha de ignição no cilindro 1. Pode ser a bobina, a vela ou o injetor — <strong>confirmamos qual antes de trocar seja o que for.</strong></div>
-      <div class="obd-foot">O código diz onde está o sintoma, não diz qual é a peça. E há avarias que código nenhum mostra — um ruído, uma fuga, uma correia a ganir. Ouvimos e vemos o carro, não só a máquina.</div>
+    <div class="obd" aria-label="Exemplo de relatório de diagnóstico">
+      <div class="obd-head"><span class="dot"></span> Relatório de diagnóstico · exemplo</div>
+      <dl class="rep">
+        <div><dt>Viatura</dt><dd>Ligeiro de passageiros, 1.5 diesel, 2016</dd></div>
+        <div><dt>Sintoma</dt><dd>Dificuldade de arranque a frio, luz de motor acesa</dd></div>
+        <div><dt>Verificado</dt><dd>Leitura das unidades de comando, medição do circuito de pré-aquecimento, teste de compressão</dd></div>
+        <div class="key"><dt>Causa</dt><dd>Vela de incandescência do cilindro 3 sem continuidade</dd></div>
+        <div><dt>Proposta</dt><dd>Substituição das quatro velas de incandescência</dd></div>
+      </dl>
+      <div class="obd-foot">É este o documento que recebe no fim do diagnóstico. Avance connosco ou não, o relatório é seu.</div>
     </div>
   </div>
 </div>
@@ -113,7 +126,7 @@
           <a class="btn btn-ghost" style="color:var(--ink)" href="marcacoes.html">Marcar por escrito</a>
         </div>
         <div class="hours">
-          <div><span>Segunda a sábado</span><span>9h — 21h</span></div>
+          <div><span>Segunda a sábado</span><span>9h às 21h</span></div>
           <div><span>Domingo</span><span>Encerrado</span></div>
         </div>
       </div>
@@ -156,7 +169,7 @@ function carregarMapa(){
 
 <footer>
   <div class="wrap">
-    <span>NeNeTorque — Oficina Auto · NIF 248555855</span>
+    <span>NeNeTorque Oficina Auto · NIF 248555855</span>
     <span><a href="https://www.livroreclamacoes.pt/inicio">Livro de Reclamações Eletrónico</a></span>
   </div>
 </footer>
@@ -170,7 +183,7 @@ function carregarMapa(){
 {
   "@context":"https://schema.org",
   "@type":"AutoRepair",
-  "name":"NeNeTorque — Oficina Auto",
+  "name":"NeNeTorque Oficina Auto",
   "telephone":"+351934186655",
   "email":"[[EMAIL]]",
   "url":"[[SITE_URL]]",
