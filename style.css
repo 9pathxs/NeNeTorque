@@ -35,6 +35,10 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 
 /* ---------- header + nav ---------- */
 .bar{position:sticky;top:0;z-index:60;background:var(--deep);color:var(--paper)}
+@media(max-width:819px){
+  .bar{transition:transform .24s ease}
+  .bar.bar-hidden{transform:translateY(-100%)}
+}
 .bar-top{display:flex;align-items:center;justify-content:space-between;height:58px;gap:16px}
 .brand{font-weight:800;letter-spacing:-.02em;font-size:1.05rem;text-decoration:none;white-space:nowrap}
 .brand span{color:var(--amber)}
@@ -222,3 +226,18 @@ footer a{color:var(--amber)}
 .callbar a{flex:1;text-align:center;padding:19px 8px;font-weight:700;text-decoration:none;font-size:1rem}
 .callbar .c1{background:var(--amber);color:var(--ink)}
 .callbar .c2{background:var(--deep);color:var(--paper)}
+
+
+/* ================= MOBILE ================= */
+@media(max-width:819px){
+  /* o cartão de relatório sai: ocupa muito e não acrescenta no telemóvel */
+  .obd{display:none}
+
+  .hero{padding:40px 0 46px}
+  .hero h1{max-width:none}
+  section{padding:48px 0}
+
+  /* botões todos com a mesma largura, empilhados */
+  .btn-row{flex-direction:column;gap:10px;margin-top:24px}
+  .btn-row .btn{width:100%}
+}
