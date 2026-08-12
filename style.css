@@ -228,16 +228,106 @@ footer a{color:var(--amber)}
 .callbar .c2{background:var(--deep);color:var(--paper)}
 
 
-/* ================= MOBILE ================= */
+/* ================= TELEMÓVEL ================= */
+.svc-more{display:none}
+
 @media(max-width:819px){
-  /* o cartão de relatório sai: ocupa muito e não acrescenta no telemóvel */
+
+  /* ---- base ---- */
+  body{font-size:16px;line-height:1.5}
+  section{padding:44px 0}
+  .wrap{padding:0 20px}
+
+  h1{font-size:1.95rem;letter-spacing:-.025em}
+  h2{font-size:1.42rem;margin-bottom:10px}
+  h3{font-size:1.02rem}
+  .lede{font-size:.98rem}
+  .eyebrow{font-size:.66rem;letter-spacing:.12em;margin-bottom:10px}
+
+  /* ---- cabeçalho ---- */
+  .bar{transition:transform .24s ease}
+  .bar.bar-hidden{transform:translateY(-100%)}
+  .bar-top{height:52px}
+  .brand{font-size:1rem}
+  .nav ul{gap:20px;padding:9px 20px}
+  .nav a{font-size:.68rem;letter-spacing:.1em}
+
+  /* ---- hero ---- */
+  .hero{padding:36px 0 42px}
+  .hero h1{max-width:none}
+  .hero .lede{margin-top:14px}
   .obd{display:none}
 
-  .hero{padding:40px 0 46px}
-  .hero h1{max-width:none}
-  section{padding:48px 0}
-
-  /* botões todos com a mesma largura, empilhados */
-  .btn-row{flex-direction:column;gap:10px;margin-top:24px}
+  /* ---- botões ---- */
+  .btn{padding:14px 22px;font-size:.98rem}
+  .btn-row{flex-direction:column;gap:10px;margin-top:22px}
   .btn-row .btn{width:100%}
+
+  /* ---- banda dos 40 € ---- */
+  .fee{font-size:3.4rem;margin:2px 0 14px}
+  .fee-table{margin-top:22px}
+  .fee-table div{gap:14px;padding:11px 0}
+  .fee-v{font-size:1.1rem;min-width:52px}
+  .fee-table span:last-child{font-size:.9rem}
+  .fee-foot{font-size:.86rem;margin-top:14px}
+
+  /* ---- serviços na página inicial ---- */
+  .svc-grid{display:none}
+  .svc-more{display:inline-flex;width:100%;margin-top:22px}
+
+  /* ---- passos ---- */
+  .steps{margin-top:24px;gap:1px}
+  .step{padding:18px 18px 20px}
+  .step-n{font-size:.72rem;margin-bottom:8px}
+  .step p{font-size:.9rem;margin-top:5px}
+
+  /* ---- acordeão dos serviços ---- */
+  .phead{padding:34px 0 36px}
+  .doc{margin-top:0}
+  .svc-block{padding:0;border-top:1px solid var(--line)}
+  .svc-block:first-child{padding-top:0;border-top:1px solid var(--line)}
+  .svc-block h2{
+    font-size:1.06rem;font-weight:700;margin:0;padding:17px 30px 17px 0;
+    position:relative;cursor:pointer;
+  }
+  .svc-block h2::after{
+    content:"";position:absolute;right:6px;top:50%;width:9px;height:9px;
+    border-right:2px solid var(--amber);border-bottom:2px solid var(--amber);
+    transform:translateY(-70%) rotate(45deg);transition:transform .18s ease;
+  }
+  .svc-block.open h2::after{transform:translateY(-20%) rotate(-135deg)}
+  .svc-body{display:none;padding-bottom:24px}
+  .svc-block.open .svc-body{display:block}
+  .svc-block p{font-size:.94rem}
+  .svc-block ul{margin-top:14px;gap:7px}
+  .svc-block li{font-size:.92rem;padding-left:20px}
+  .svc-note{margin-top:24px;font-size:.9rem;padding:14px 15px}
+
+  /* ---- marcações ---- */
+  .book-grid{gap:30px}
+  .field{margin-bottom:14px}
+  .field label{font-size:.66rem;margin-bottom:6px}
+  .field input,.field select,.field textarea{font-size:1rem;padding:12px 13px}
+  .two{gap:14px}
+
+  /* ---- contactos e mapa ---- */
+  .cols{gap:30px;margin-top:26px}
+  .contact a.tel{font-size:1.85rem;margin:6px 0 2px}
+  .hours{font-size:.9rem;margin-top:18px}
+  .hours div{max-width:none}
+  .map-wrap{margin-top:20px}
+  .map-wrap iframe{height:342px;margin-top:-52px}
+  .areas.small li{font-size:.72rem;padding:5px 9px}
+  .photo{aspect-ratio:3/2;font-size:.72rem}
+
+  /* ---- rodapé ---- */
+  footer{padding:26px 0;font-size:.78rem}
+  footer .wrap{gap:8px;flex-direction:column}
+}
+
+/* ecrãs muito estreitos */
+@media(max-width:359px){
+  h1{font-size:1.75rem}
+  .fee{font-size:2.9rem}
+  .contact a.tel{font-size:1.6rem}
 }
