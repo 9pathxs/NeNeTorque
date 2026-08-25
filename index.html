@@ -11,8 +11,8 @@
 <meta property="og:locale" content="pt_PT">
 <meta property="og:title" content="NeNeTorque Oficina Auto">
 <meta property="og:description" content="Oficina auto em Gondomar. Diagnóstico feito antes de trocar peças, orçamento escrito antes de qualquer trabalho.">
-<meta property="og:url" content="[[SITE_URL]]">
-<meta property="og:image" content="[[SITE_URL]]/preview.jpg">
+<meta property="og:url" content="https://nenetorque.pt">
+<meta property="og:image" content="https://nenetorque.pt/preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -121,7 +121,7 @@
         <h2>Diga-nos o que o carro está a fazer</h2>
         <p style="font-size:1rem;opacity:.85;max-width:44ch">Descreva o sintoma e dizemos-lhe logo se é caso para diagnóstico, e quando o podemos ver.</p>
         <a class="tel" href="tel:+351934186655">934 186 655</a>
-        <p style="opacity:.8;font-size:.95rem">[[EMAIL]]</p>
+        <p style="opacity:.8;font-size:.95rem">geral.nenetorque@gmail.com</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="tel:+351934186655">Ligar agora</a>
           <a class="btn btn-ghost" style="color:var(--ink)" href="marcacoes.html">Marcar por escrito</a>
@@ -157,7 +157,7 @@
 function carregarMapa(){
   var w = document.getElementById('map-wrap');
   var url = w.dataset.embed;
-  if(!url || url.indexOf('[[') === 0) return;
+  if(!url) return;
   var f = document.createElement('iframe');
   f.src = url;
   f.loading = 'lazy';
@@ -186,8 +186,8 @@ function carregarMapa(){
   "@type":"AutoRepair",
   "name":"NeNeTorque Oficina Auto",
   "telephone":"+351934186655",
-  "email":"[[EMAIL]]",
-  "url":"[[SITE_URL]]",
+  "email":"geral.nenetorque@gmail.com",
+  "url":"https://nenetorque.pt",
   "vatID":"248555855",
   "priceRange":"€€",
   "areaServed":[
