@@ -109,7 +109,7 @@
       <li><a href="servicos.html">Serviços</a></li>
       <li><a href="marcacoes.html">Marcações</a></li>
       <li><a href="quem-somos.html">Quem somos</a></li>
-      <li><a href="#contactos">Contactos</a></li>
+      <li class="nav-contactos"><a href="#contactos">Contactos</a></li>
     </ul>
   </nav>
 </header>
@@ -213,10 +213,25 @@
         <h2 style="font-size:clamp(1.3rem,3.4vw,1.7rem)">Cerca de 20 minutos à volta de Gondomar</h2>
         <p style="font-size:.97rem;opacity:.85">Trabalhamos apenas por marcação. Não temos atendimento ao balcão. Morada só é indicada quando a marcação fica confirmada.</p>
 
-        <div class="map-wrap" id="map-wrap" data-embed="https://www.google.com/maps/d/embed?mid=1YR7tmy5OlyMtpll75Tr0hCQL6XU1n3M">
-          <div class="map-ph">
-            ZONAS DE SERVIÇO
-            <button class="btn btn-primary" style="padding:11px 20px;font-size:.92rem;margin-top:6px" onclick="carregarMapa()">Ver mapa</button>
+        <div class="mapa-card">
+          <svg viewBox="0 0 720 540" xmlns="http://www.w3.org/2000/svg" class="mapa" role="img" aria-labelledby="mapa-t mapa-d">
+          <title id="mapa-t">Zonas servidas pela NeNeTorque Oficina Auto</title>
+          <desc id="mapa-d">Mapa das zonas servidas a oriente do Porto: Gondomar e Sao Cosme, Fanzeres, Baguim do Monte, Rio Tinto, Valbom, Ermesinde, Aguas Santas, Campanha e Paranhos.</desc>
+          <rect width="720" height="540" fill="#0D2E31"/>
+          <g stroke="#F4F2ED" stroke-width="1" opacity=".055"><line x1="3.3" y1="0" x2="3.3" y2="540"/><line x1="52.7" y1="0" x2="52.7" y2="540"/><line x1="102.0" y1="0" x2="102.0" y2="540"/><line x1="151.4" y1="0" x2="151.4" y2="540"/><line x1="200.7" y1="0" x2="200.7" y2="540"/><line x1="250.1" y1="0" x2="250.1" y2="540"/><line x1="299.5" y1="0" x2="299.5" y2="540"/><line x1="348.8" y1="0" x2="348.8" y2="540"/><line x1="398.2" y1="0" x2="398.2" y2="540"/><line x1="447.6" y1="0" x2="447.6" y2="540"/><line x1="496.9" y1="0" x2="496.9" y2="540"/><line x1="546.3" y1="0" x2="546.3" y2="540"/><line x1="595.7" y1="0" x2="595.7" y2="540"/><line x1="645.0" y1="0" x2="645.0" y2="540"/><line x1="694.4" y1="0" x2="694.4" y2="540"/><line x1="0" y1="20.6" x2="720" y2="20.6"/><line x1="0" y1="70.0" x2="720" y2="70.0"/><line x1="0" y1="119.4" x2="720" y2="119.4"/><line x1="0" y1="168.7" x2="720" y2="168.7"/><line x1="0" y1="218.1" x2="720" y2="218.1"/><line x1="0" y1="267.5" x2="720" y2="267.5"/><line x1="0" y1="316.8" x2="720" y2="316.8"/><line x1="0" y1="366.2" x2="720" y2="366.2"/><line x1="0" y1="415.6" x2="720" y2="415.6"/><line x1="0" y1="464.9" x2="720" y2="464.9"/><line x1="0" y1="514.3" x2="720" y2="514.3"/></g>
+          <path d="M 155.2 266.7 C 165.0 209.3 279.6 127.3 326.0 86.9 C 372.4 46.5 398.3 2.8 433.6 24.3 C 468.9 45.8 516.8 155.1 537.8 215.8 C 558.7 276.5 559.6 339.7 559.3 388.5 C 559.0 437.3 559.9 491.1 535.9 508.7 C 511.8 526.3 459.7 506.9 414.9 494.0 C 370.1 481.0 310.5 468.8 267.2 431.0 C 223.9 393.1 145.3 324.0 155.2 266.7 Z" fill="#10656A" fill-opacity=".42" stroke="#F4F2ED" stroke-opacity=".32" stroke-width="2" stroke-dasharray="9 7"/>
+          <g class="mapa-rot" font-size="21" fill="#F4F2ED" fill-opacity=".93"><g><circle cx="200.7" cy="272.7" r="14" fill="#F4F2ED" opacity=".13"/><circle cx="200.7" cy="272.7" r="6.5" fill="#F4F2ED"/><text x="180.7" y="281.7" text-anchor="end">Paranhos</text></g><g><circle cx="300.0" cy="398.8" r="14" fill="#F4F2ED" opacity=".13"/><circle cx="300.0" cy="398.8" r="6.5" fill="#F4F2ED"/><text x="280.0" y="407.8" text-anchor="end">Campanhã</text></g><g><circle cx="341.4" cy="130.3" r="14" fill="#F4F2ED" opacity=".13"/><circle cx="341.4" cy="130.3" r="6.5" fill="#F4F2ED"/><text x="321.4" y="139.3" text-anchor="end">Águas Santas</text></g><g><circle cx="428.3" cy="70.0" r="14" fill="#F4F2ED" opacity=".13"/><circle cx="428.3" cy="70.0" r="6.5" fill="#F4F2ED"/><text x="448.3" y="79.0" text-anchor="start">Ermesinde</text></g><g><circle cx="420.0" cy="267.3" r="14" fill="#F4F2ED" opacity=".13"/><circle cx="420.0" cy="267.3" r="6.5" fill="#F4F2ED"/><text x="400.0" y="276.3" text-anchor="end">Rio Tinto</text></g><g><circle cx="498.6" cy="239.9" r="14" fill="#F4F2ED" opacity=".13"/><circle cx="498.6" cy="239.9" r="6.5" fill="#F4F2ED"/><text x="518.6" y="248.9" text-anchor="start">Baguim do Monte</text></g><g><circle cx="519.3" cy="365.9" r="14" fill="#F4F2ED" opacity=".13"/><circle cx="519.3" cy="365.9" r="6.5" fill="#F4F2ED"/><text x="539.3" y="374.9" text-anchor="start">Fânzeres</text></g><g><circle cx="411.7" cy="448.1" r="14" fill="#F4F2ED" opacity=".13"/><circle cx="411.7" cy="448.1" r="6.5" fill="#F4F2ED"/><text x="391.7" y="457.1" text-anchor="end">Valbom</text></g><g><circle cx="511.0" cy="470.0" r="14" fill="#F4F2ED" opacity=".13"/><circle cx="511.0" cy="470.0" r="6.5" fill="#F4F2ED"/><text x="531.0" y="479.0" text-anchor="start">Gondomar</text></g></g>
+          <g class="mapa-esc" opacity=".45" stroke="#F4F2ED" stroke-width="2" fill="#F4F2ED">
+          <line x1="34" y1="506" x2="132.7" y2="506"/>
+          <line x1="34" y1="500" x2="34" y2="512"/>
+          <line x1="132.7" y1="500" x2="132.7" y2="512"/>
+          <text x="34" y="492" font-size="17" stroke="none">2 km</text>
+          <text x="686" y="506" text-anchor="end" font-size="17" stroke="none">N &#8593;</text>
+          </g>
+          </svg>
+          <div class="mapa-nota">
+            <span>Zonas servidas · mapa esquemático</span>
+            <a href="https://www.google.com/maps/d/viewer?mid=1YR7tmy5OlyMtpll75Tr0hCQL6XU1n3M" target="_blank" rel="noopener">Ver no Google Maps ›</a>
           </div>
         </div>
 
@@ -230,20 +245,6 @@
   </div>
 </section>
 
-<script>
-function carregarMapa(){
-  var w = document.getElementById('map-wrap');
-  var url = w.dataset.embed;
-  if(!url) return;
-  var f = document.createElement('iframe');
-  f.src = url;
-  f.loading = 'lazy';
-  f.referrerPolicy = 'no-referrer-when-downgrade';
-  f.title = 'Zonas servidas pela NeNeTorque';
-  w.innerHTML = '';
-  w.appendChild(f);
-}
-</script>
 
 <footer>
   <div class="wrap">

@@ -9,14 +9,20 @@
   --wrap:1080px;
   --display:'Archivo',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --callbar:61px;                 /* altura exata da barra fixa em telemovel */
+  --segura:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:112px}
+html{scroll-behavior:smooth;scroll-padding-top:112px;background:#081C1E}
+/* corpo em coluna: o rodape e sempre empurrado ate ao fundo do ecra,
+   por isso nunca sobra fundo claro por baixo em paginas curtas */
 body{
   font-family:var(--display);background:var(--paper);color:var(--ink);
-  font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:72px;
+  font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;
 }
-@media(min-width:820px){body{padding-bottom:0}}
+body>*{flex-shrink:0}
+body>footer{margin-top:auto}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
 section{padding:62px 0}
 @media(min-width:820px){section{padding:86px 0}}
@@ -110,13 +116,6 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 .fee-foot{margin-top:18px;font-size:.9rem;opacity:.72}
 
 /* ---------- service-area map ---------- */
-.map-wrap{margin-top:24px;border:1px solid var(--line);overflow:hidden}
-.map-wrap iframe{display:block;width:100%;height:392px;border:0;margin-top:-58px}
-.map-ph{
-  aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:10px;text-align:center;padding:22px;font-family:var(--mono);font-size:.76rem;line-height:1.7;
-  border:2px dashed var(--amber);background:rgba(232,120,28,.06);
-}
 .areas.small{margin-top:16px}
 .areas.small li{font-size:.74rem;padding:5px 10px;opacity:.8}
 
@@ -221,11 +220,34 @@ footer{background:#081C1E;color:var(--paper);padding:34px 0;font-size:.82rem}
 footer .wrap{display:flex;flex-wrap:wrap;gap:14px 32px;justify-content:space-between;opacity:.68}
 footer a{color:var(--amber)}
 
-.callbar{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;border-top:1px solid rgba(0,0,0,.2)}
+/* barra fixa de contacto, so em telemovel.
+   altura fixa e conhecida (--callbar) para o rodape a poder compensar ao
+   certo: e isso que elimina a faixa clara que aparecia por cima dela */
+.callbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;
+  border-top:1px solid rgba(0,0,0,.2);padding-bottom:var(--segura);
+}
 @media(min-width:820px){.callbar{display:none}}
-.callbar a{flex:1;text-align:center;padding:19px 8px;font-weight:700;text-decoration:none;font-size:1rem}
+.callbar a{
+  flex:1;display:flex;align-items:center;justify-content:center;height:60px;
+  padding:0 8px;font-weight:700;text-decoration:none;font-size:1rem;
+}
 .callbar .c1{background:var(--amber);color:var(--ink)}
 .callbar .c2{background:var(--deep);color:var(--paper)}
+@media(max-width:819px){
+  footer{padding-bottom:calc(32px + var(--callbar) + var(--segura))}
+}
+
+/* ---------- mapa das zonas (SVG proprio, sem terceiros) ---------- */
+.mapa-card{margin-top:24px;border:1px solid var(--line);overflow:hidden;background:var(--deep)}
+.mapa{display:block;width:100%;height:auto}
+.mapa text{font-family:var(--mono)}
+.mapa-nota{
+  display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:space-between;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;opacity:.62;
+  padding:9px 12px;border-top:1px solid var(--line-dark);color:var(--paper);
+}
+.mapa-nota a{color:var(--paper);text-underline-offset:3px}
 
 
 /* ================= TELEMÓVEL ================= */
@@ -233,61 +255,65 @@ footer a{color:var(--amber)}
 
 @media(max-width:819px){
 
-  /* ---- base ---- */
-  body{font-size:16px;line-height:1.5}
-  section{padding:44px 0}
-  .wrap{padding:0 20px}
+  /* ---- base ----
+     escala aproximada da versao de computador: texto maior e mais ar entre
+     blocos, para caber menos informacao de cada vez no ecra */
+  body{font-size:17px;line-height:1.55}
+  section{padding:64px 0}
+  .wrap{padding:0 22px}
 
-  h1{font-size:1.95rem;letter-spacing:-.025em}
-  h2{font-size:1.42rem;margin-bottom:10px}
-  h3{font-size:1.02rem}
-  .lede{font-size:.98rem}
-  .eyebrow{font-size:.66rem;letter-spacing:.12em;margin-bottom:10px}
+  h1{font-size:2.35rem;letter-spacing:-.025em}
+  h2{font-size:1.72rem;margin-bottom:14px}
+  h3{font-size:1.1rem}
+  .lede{font-size:1.06rem}
+  .eyebrow{font-size:.7rem;letter-spacing:.14em;margin-bottom:14px}
 
   /* ---- cabeçalho ---- */
   .bar{transition:transform .24s ease}
   .bar.bar-hidden{transform:translateY(-100%)}
-  .bar-top{height:52px}
-  .brand{font-size:1rem}
-  .nav ul{gap:20px;padding:9px 20px}
-  .nav a{font-size:.68rem;letter-spacing:.1em}
+  .bar-top{height:56px}
+  .brand{font-size:1.05rem}
+  /* quatro itens cabem numa linha; contactos chega-se pela barra fixa e pelo rodape */
+  .nav-contactos{display:none}
+  .nav ul{gap:0;padding:12px 22px;justify-content:space-between;overflow-x:visible}
+  .nav a{font-size:.7rem;letter-spacing:.1em}
 
   /* ---- hero ---- */
-  .hero{padding:36px 0 42px}
+  .hero{padding:54px 0 62px}
   .hero h1{max-width:none}
-  .hero .lede{margin-top:14px}
+  .hero .lede{margin-top:18px}
   .obd{display:none}
 
   /* ---- botões ---- */
-  .btn{padding:14px 22px;font-size:.98rem}
-  .btn-row{flex-direction:column;gap:10px;margin-top:22px}
+  .btn{padding:17px 24px;font-size:1.02rem}
+  .btn-row{flex-direction:column;gap:12px;margin-top:30px}
   .btn-row .btn{width:100%}
 
   /* ---- banda dos 40 € ---- */
-  .fee{font-size:3.4rem;margin:2px 0 14px}
-  .fee-table{margin-top:22px}
-  .fee-table div{gap:14px;padding:11px 0}
-  .fee-v{font-size:1.1rem;min-width:52px}
-  .fee-table span:last-child{font-size:.9rem}
-  .fee-foot{font-size:.86rem;margin-top:14px}
+  .fee{font-size:4rem;margin:4px 0 20px}
+  .fee-table{margin-top:28px}
+  .fee-table div{gap:16px;padding:15px 0}
+  .fee-v{font-size:1.2rem;min-width:60px}
+  .fee-table span:last-child{font-size:.97rem}
+  .fee-foot{font-size:.92rem;margin-top:18px}
 
   /* ---- serviços na página inicial ---- */
   .svc-grid{display:none}
-  .svc-more{display:inline-flex;width:100%;margin-top:22px}
+  .svc-more{display:inline-flex;width:100%;margin-top:28px}
 
   /* ---- passos ---- */
-  .steps{margin-top:24px;gap:1px}
-  .step{padding:18px 18px 20px}
-  .step-n{font-size:.72rem;margin-bottom:8px}
-  .step p{font-size:.9rem;margin-top:5px}
+  .steps{margin-top:32px;gap:2px}
+  .step{padding:26px 22px 28px}
+  .step-n{font-size:.76rem;margin-bottom:12px}
+  .step p{font-size:.96rem;margin-top:8px}
 
   /* ---- acordeão dos serviços ---- */
-  .phead{padding:34px 0 36px}
+  .phead{padding:48px 0 52px}
   .doc{margin-top:0}
   .svc-block{padding:0;border-top:1px solid var(--line)}
   .svc-block:first-child{padding-top:0;border-top:1px solid var(--line)}
   .svc-block h2{
-    font-size:1.06rem;font-weight:700;margin:0;padding:17px 30px 17px 0;
+    font-size:1.14rem;font-weight:700;margin:0;padding:22px 32px 22px 0;
     position:relative;cursor:pointer;
   }
   .svc-block h2::after{
@@ -296,38 +322,41 @@ footer a{color:var(--amber)}
     transform:translateY(-70%) rotate(45deg);transition:transform .18s ease;
   }
   .svc-block.open h2::after{transform:translateY(-20%) rotate(-135deg)}
-  .svc-body{display:none;padding-bottom:24px}
+  .svc-body{display:none;padding-bottom:30px}
   .svc-block.open .svc-body{display:block}
-  .svc-block p{font-size:.94rem}
-  .svc-block ul{margin-top:14px;gap:7px}
-  .svc-block li{font-size:.92rem;padding-left:20px}
-  .svc-note{margin-top:24px;font-size:.9rem;padding:14px 15px}
+  .svc-block p{font-size:1rem}
+  .svc-block ul{margin-top:18px;gap:10px}
+  .svc-block li{font-size:.97rem;padding-left:22px}
+  .svc-note{margin-top:30px;font-size:.95rem;padding:17px 18px}
 
   /* ---- marcações ---- */
-  .book-grid{gap:30px}
-  .field{margin-bottom:14px}
-  .field label{font-size:.66rem;margin-bottom:6px}
-  .field input,.field select,.field textarea{font-size:1rem;padding:12px 13px}
-  .two{gap:14px}
+  .book-grid{gap:40px}
+  .field{margin-bottom:20px}
+  .field label{font-size:.7rem;margin-bottom:9px}
+  .field input,.field select,.field textarea{font-size:1rem;padding:15px 14px}
+  .field textarea{min-height:112px}
+  .two{gap:20px}
+  .book-alt{font-size:.92rem;margin-top:18px}
 
   /* ---- contactos e mapa ---- */
-  .cols{gap:30px;margin-top:26px}
-  .contact a.tel{font-size:1.85rem;margin:6px 0 2px}
-  .hours{font-size:.9rem;margin-top:18px}
-  .hours div{max-width:none}
-  .map-wrap{margin-top:20px}
-  .map-wrap iframe{height:342px;margin-top:-52px}
-  .areas.small li{font-size:.72rem;padding:5px 9px}
-  .photo{aspect-ratio:3/2;font-size:.72rem}
+  .cols{gap:42px;margin-top:34px}
+  .contact a.tel{font-size:2.1rem;margin:10px 0 4px}
+  .hours{font-size:.96rem;margin-top:26px}
+  .hours div{max-width:none;padding:11px 0}
+  .mapa-card{margin-top:22px}
+  .areas.small{margin-top:20px}
+  .areas.small li{font-size:.78rem;padding:7px 12px}
+  .photo{aspect-ratio:3/2;font-size:.78rem}
 
   /* ---- rodapé ---- */
-  footer{padding:26px 0;font-size:.78rem}
-  footer .wrap{gap:8px;flex-direction:column}
+  footer{font-size:.82rem;padding-top:32px}
+  footer .wrap{gap:10px;flex-direction:column}
 }
 
 /* ecrãs muito estreitos */
 @media(max-width:359px){
-  h1{font-size:1.75rem}
-  .fee{font-size:2.9rem}
-  .contact a.tel{font-size:1.6rem}
+  h1{font-size:2rem}
+  .fee{font-size:3.3rem}
+  .contact a.tel{font-size:1.75rem}
+  .nav a{font-size:.64rem;letter-spacing:.06em}
 }
