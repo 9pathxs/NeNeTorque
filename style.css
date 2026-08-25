@@ -238,10 +238,33 @@ footer a{color:var(--amber)}
   footer{padding-bottom:calc(32px + var(--callbar) + var(--segura))}
 }
 
-/* ---------- mapa das zonas (SVG proprio, sem terceiros) ---------- */
+/* ---------- mapa das zonas: tiles do OpenStreetMap + camada propria ---------- */
 .mapa-card{margin-top:24px;border:1px solid var(--line);overflow:hidden;background:var(--deep)}
-.mapa{display:block;width:100%;height:auto}
-.mapa text{font-family:var(--mono)}
+.mapa{position:relative;overflow:hidden;background:var(--deep)}
+.mapa-tiles{position:absolute;display:grid;line-height:0}
+/* escurece o mapa claro do OSM para a paleta da marca */
+.mapa-tiles img{
+  width:100%;height:100%;display:block;
+  filter:invert(1) hue-rotate(180deg) saturate(.45) brightness(.9) contrast(1.02);
+}
+/* veu da cor da marca por cima do mapa, para os nossos pontos sobressairem */
+.mapa-tiles::after{content:"";position:absolute;inset:0;background:rgba(13,46,49,.42);pointer-events:none}
+.mapa-pins{position:absolute;inset:0;width:100%;height:100%}
+.mapa-esc line{stroke:#F4F2ED;stroke-width:2.5;opacity:.8}
+.mapa-esc text{fill:#F4F2ED;font-family:var(--mono);font-size:19px;opacity:.8}
+.mapa-rot{position:absolute;inset:0;pointer-events:none}
+.mapa-rot b{
+  position:absolute;font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.02em;
+  color:#fff;white-space:nowrap;transform:translateY(-50%);
+  text-shadow:0 0 3px #0D2E31,0 0 5px #0D2E31,0 0 9px #0D2E31,0 1px 2px #0D2E31;
+}
+.mapa-rot .r-d{margin-left:15px}
+.mapa-rot .r-e{transform:translate(-100%,-50%);margin-left:-15px}
+.mapa-attr{
+  position:absolute;right:0;bottom:0;font-family:var(--mono);font-size:.62rem;
+  color:var(--paper);background:rgba(13,46,49,.82);padding:3px 8px;text-decoration:none;
+}
+.mapa-attr:hover{text-decoration:underline}
 .mapa-nota{
   display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:space-between;
   font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;opacity:.62;
@@ -344,6 +367,9 @@ footer a{color:var(--amber)}
   .hours{font-size:.96rem;margin-top:26px}
   .hours div{max-width:none;padding:11px 0}
   .mapa-card{margin-top:22px}
+  .mapa-rot b{font-size:.66rem}
+  .mapa-rot .r-d{margin-left:12px}
+  .mapa-rot .r-e{margin-left:-12px}
   .areas.small{margin-top:20px}
   .areas.small li{font-size:.78rem;padding:7px 12px}
   .photo{aspect-ratio:3/2;font-size:.78rem}
