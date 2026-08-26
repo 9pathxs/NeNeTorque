@@ -1,3 +1,14 @@
+/* Tipos de letra servidos deste dominio, sem pedidos a terceiros.
+   Archivo (variavel) e IBM Plex Mono, ambos sob a SIL Open Font License.
+   As licencas acompanham os ficheiros em fontes/. */
+@font-face{
+  font-family:'Archivo';font-style:normal;font-weight:100 900;font-display:swap;
+  src:url('fontes/archivo.woff2') format('woff2');
+}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('fontes/plex-mono-400.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('fontes/plex-mono-500.woff2') format('woff2')}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('fontes/plex-mono-600.woff2') format('woff2')}
+
 :root{
   --paper:#F4F2ED;
   --teal:#10656A;
@@ -12,7 +23,7 @@
   --callbar:61px;                 /* altura exata da barra fixa em telemovel */
   --segura:env(safe-area-inset-bottom,0px);
 }
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth;scroll-padding-top:112px;background:#081C1E}
 /* corpo em coluna: o rodape e sempre empurrado ate ao fundo do ecra,
    por isso nunca sobra fundo claro por baixo em paginas curtas */
@@ -207,13 +218,23 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 }
 .field .ajuda{font-size:.82rem;opacity:.6;margin-top:7px;line-height:1.45}
 /* o seletor de data do telemovel vem com aspeto proprio: uniformiza-se aqui */
+.campo-data{position:relative;display:block}
 .field input[type=date]{min-height:52px;color-scheme:dark;-webkit-text-fill-color:var(--paper)}
+/* o dd/mm/aaaa nativo nao aparece em alguns navegadores dentro de aplicacoes,
+   por isso desenhamos a dica e escondemo-la assim que houver data escolhida */
+.dica-data{
+  position:absolute;left:15px;top:50%;transform:translateY(-50%);pointer-events:none;
+  font-family:var(--display);font-size:1rem;color:rgba(244,242,237,.5);
+}
+.field input[type=date]:not(.vazio)+.dica-data{display:none}
+.field input[type=date].vazio{-webkit-text-fill-color:transparent;color:transparent}
 .field input[type=date]::-webkit-datetime-edit{color:var(--paper)}
 .field input[type=date].vazio::-webkit-datetime-edit{opacity:.58}
 .field input[type=date]::-webkit-calendar-picker-indicator{opacity:.65;cursor:pointer}
 .phead-sub{margin-top:14px;font-size:1rem;opacity:.8;max-width:40ch}
 /* paginas onde so faz sentido uma acao: a chamada ocupa a barra toda */
 .callbar-so .c1{flex:1}
+@media(min-width:820px){.hours-marcacoes{border-top:1px solid var(--line-dark);padding-top:18px;margin-top:26px}}
 
 /* ---------- telefone: acao em telemovel, informacao em computador ----------
    um botao "Ligar" num portatil nao faz ninguem ligar. Em computador o
@@ -227,6 +248,7 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
   .promove{background:var(--amber);color:var(--ink);border-color:transparent}
   .promove:hover{background:#f5871f}
   .contact a.tel{font-size:2.9rem}
+  .contact .email-grande{font-size:clamp(1.05rem,2.95vw,2.2rem)}
 }
 .btn-ghost.escuro{color:var(--ink)}
 /* em computador a chamada e o numero, nao um botao que nao liga a ninguem */
@@ -235,9 +257,8 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
   font-family:var(--mono);font-size:clamp(2.2rem,4.4vw,3.4rem);font-weight:600;line-height:1;
   color:var(--amber);text-decoration:none;display:inline-block;
 }
-.tel-destaque:hover{text-decoration:underline;text-underline-offset:7px}
-.chamada-alt{margin-top:16px;font-size:.98rem;opacity:.75}
-.chamada-alt a{color:inherit;text-underline-offset:4px}
+.tel-destaque.escuro{color:var(--teal)}
+.chamada-btn{margin-top:22px}
 
 @media(min-width:820px){
   .contact .cols .lede{margin-bottom:4px}
@@ -263,6 +284,11 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 /* ---------- contact ---------- */
 .contact{background:rgba(16,101,106,.07)}
 .contact a.tel{font-family:var(--mono);font-size:clamp(1.5rem,5.5vw,2.3rem);font-weight:600;color:var(--teal);text-decoration:none;display:inline-block;margin:8px 0 4px}
+.email-grande{
+  font-family:var(--mono);font-weight:600;color:var(--teal);text-decoration:none;
+  font-size:1.05rem;display:inline-block;word-break:break-all;
+}
+.email-grande:hover{text-decoration:underline;text-underline-offset:4px}
 .hours{font-family:var(--mono);font-size:.95rem;margin-top:22px}
 .hours div{padding:7px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;max-width:330px}
 
@@ -276,7 +302,11 @@ footer a{color:var(--amber)}
 .callbar{
   position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;
   border-top:1px solid rgba(0,0,0,.2);padding-bottom:var(--segura);
+  transform:translateY(105%);transition:transform .24s ease;
 }
+/* ao contrario do cabecalho: esconde-se no topo e sobe quando se comeca a rolar */
+.callbar.callbar-visivel{transform:none}
+@media(prefers-reduced-motion:reduce){.callbar{transition:none}}
 @media(min-width:820px){.callbar{display:none}}
 .callbar a{
   flex:1;display:flex;align-items:center;justify-content:center;height:60px;
@@ -408,7 +438,7 @@ footer a{color:var(--amber)}
   .phead-curto h1{font-size:1.95rem}
   .book{padding-top:20px;padding-bottom:46px}
   .book-grid{gap:34px}
-  .book-info{border-top:1px solid var(--line-dark);padding-top:26px}
+  .book-info{border-top:none;padding-top:6px}
   /* em telemovel o texto de contexto e so mais scroll: fica o horario */
   .book-contexto{display:none}
   .book-info .hours{margin-top:0;border-top:none;padding-top:0}

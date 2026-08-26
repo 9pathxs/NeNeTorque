@@ -79,3 +79,25 @@ var MOBILE = 820;
   abrirDoHash();
   window.addEventListener('hashchange', abrirDoHash);
 })();
+
+/* ---------- 3. barra fixa de contacto ----------
+   ao contrario do cabecalho: esconde-se no topo da pagina, onde os botoes ja
+   estao a vista, e sobe assim que se comeca a rolar                         */
+(function () {
+  var barra = document.querySelector('.callbar');
+  if (!barra) return;
+
+  var LIMITE = 150;
+  var pendente = false;
+
+  function ver() {
+    pendente = false;
+    barra.classList.toggle('callbar-visivel', window.scrollY > LIMITE);
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!pendente) { pendente = true; window.requestAnimationFrame(ver); }
+  }, { passive: true });
+
+  ver();
+})();

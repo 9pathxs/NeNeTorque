@@ -15,9 +15,8 @@
 <meta property="og:url" content="https://nenetorque.pt/marcacoes">
 <meta property="og:image" content="https://nenetorque.pt/preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#0D2E31">
+<link rel="preload" href="fontes/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,7 +24,6 @@
 <header class="bar">
   <div class="wrap bar-top">
     <a class="brand" href="./">NeNe<span>Torque</span></a>
-    <a class="bar-cta" href="tel:+351934186655">Ligar 934 186 655</a>
   </div>
   <nav class="nav" aria-label="Menu principal">
     <ul>
@@ -77,7 +75,10 @@
 
       <div class="field">
         <label for="f-dia">Que dia lhe dá jeito <span class="opt">opcional</span></label>
-        <input id="f-dia" type="date">
+        <span class="campo-data">
+          <input id="f-dia" type="date">
+          <span class="dica-data" aria-hidden="true">dd/mm/aaaa</span>
+        </span>
       </div>
 
       <div class="field">
@@ -113,7 +114,7 @@
         <p style="opacity:.85;font-size:.98rem;margin-top:10px">Recebemos o pedido, vemos se é caso para diagnóstico ou se dá para resolver logo, e ligamos-lhe com uma data. Nada é marcado até falar connosco.</p>
       </div>
 
-      <div class="hours" style="border-top:1px solid var(--line-dark);padding-top:18px;margin-top:26px">
+      <div class="hours hours-marcacoes">
         <div style="border-color:var(--line-dark)"><span>Segunda a sábado</span><span>9h às 21h</span></div>
         <div style="border-color:var(--line-dark)"><span>Domingo</span><span>Encerrado</span></div>
       </div>
