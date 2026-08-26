@@ -212,6 +212,34 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 /* paginas onde so faz sentido uma acao: a chamada ocupa a barra toda */
 .callbar-so .c1{flex:1}
 
+/* ---------- telefone: acao em telemovel, informacao em computador ----------
+   um botao "Ligar" num portatil nao faz ninguem ligar. Em computador o
+   botao sai, o numero fica em texto grande, e a acao que funciona ali
+   (marcar por escrito) passa a ser a principal. */
+.so-pc{display:none}
+@media(min-width:820px){
+  .so-tel{display:none}
+  .so-pc{display:inline-flex}
+  p.so-pc{display:block}
+  .promove{background:var(--amber);color:var(--ink);border-color:transparent}
+  .promove:hover{background:#f5871f}
+  .contact a.tel{font-size:2.9rem}
+}
+.btn-ghost.escuro{color:var(--ink)}
+.tel-lado{margin-top:18px;font-family:var(--mono);font-size:.95rem;opacity:.7}
+.tel-lado a{font-size:1.3rem;font-weight:600;color:var(--amber);text-decoration:none;margin-left:6px}
+.contact .tel-lado a{color:var(--teal)}
+
+/* coluna dos contactos: o horario encosta ao fundo, ao nivel do mapa,
+   e o que esta pelo meio respira mais, para o vazio nao ficar todo num sitio */
+@media(min-width:820px){
+  .contact .cols>div:first-child{display:flex;flex-direction:column}
+  .contact .cols .lede{margin-bottom:4px}
+  .contact a.tel{margin:30px 0 10px}
+  .contact .cols .btn-row{margin-top:34px}
+  .contact .cols .hours{margin-top:auto;padding-top:26px}
+}
+
 /* ---------- generic columns / areas / photos ---------- */
 .cols{display:grid;gap:34px;margin-top:34px}
 @media(min-width:820px){.cols{grid-template-columns:1fr 1fr;gap:48px}}
@@ -368,12 +396,14 @@ footer a{color:var(--amber)}
 
   /* ---- marcações ---- */
   /* cabeçalho curto: quem toca em Marcações quer o formulário, não o discurso */
-  .phead-curto{padding:32px 0 30px}
+  .phead-curto{padding:30px 0 20px}
   .phead-curto h1{font-size:1.95rem}
-  .phead-sub{font-size:.95rem;margin-top:10px}
-  .book{padding-top:30px}
-  .book-grid{gap:44px}
-  .book-info{border-top:1px solid var(--line-dark);padding-top:32px}
+  .book{padding-top:20px;padding-bottom:46px}
+  .book-grid{gap:34px}
+  .book-info{border-top:1px solid var(--line-dark);padding-top:26px}
+  .book-enviar{margin-top:24px}
+  .book-alt{font-size:.88rem;margin-top:12px}
+  .book-info h2{margin-bottom:8px}
   .field{margin-bottom:20px}
   .field label{font-size:.7rem;margin-bottom:9px}
   .field input,.field select,.field textarea{font-size:1rem;padding:15px 14px}

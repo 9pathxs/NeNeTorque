@@ -42,7 +42,6 @@
   <div class="wrap">
     <span class="eyebrow">Marcações</span>
     <h1 style="font-size:clamp(1.9rem,6vw,3.2rem)">Marque sem telefonar</h1>
-    <p class="phead-sub">Menos de um minuto. Nada fica marcado até falarmos consigo.</p>
   </div>
 </div>
 
@@ -57,17 +56,10 @@
       </div>
 
       <div class="field">
-        <label for="f-viatura">Viatura</label>
-        <input id="f-viatura" type="text" placeholder="Marca, modelo e ano. Ex: Renault Clio 2016"
-               autocapitalize="words" enterkeyhint="next">
-      </div>
-
-      <div class="field">
-        <label for="f-matricula">Matrícula <span class="opt">opcional</span></label>
+        <label for="f-matricula">Matrícula</label>
         <input id="f-matricula" type="text" placeholder="AA-00-AA" maxlength="8"
                autocapitalize="characters" autocomplete="off" spellcheck="false" enterkeyhint="next"
                oninput="formatarMatricula(this)">
-        <p class="ajuda">Se souber de cor. Ajuda-nos a preparar o trabalho antes de chegar.</p>
       </div>
 
       <div class="field">
@@ -83,24 +75,13 @@
         </select>
       </div>
 
-      <div class="two">
-        <div class="field">
-          <label for="f-dia">Que dia lhe dá jeito</label>
-          <input id="f-dia" type="date">
-        </div>
-        <div class="field">
-          <label for="f-periodo">Altura do dia</label>
-          <select id="f-periodo">
-            <option>Indiferente</option>
-            <option>Manhã</option>
-            <option>Tarde</option>
-            <option>Fim do dia</option>
-          </select>
-        </div>
+      <div class="field">
+        <label for="f-dia">Que dia lhe dá jeito <span class="opt">opcional</span></label>
+        <input id="f-dia" type="date">
       </div>
 
       <div class="field">
-        <label for="f-desc">O que se passa com o carro</label>
+        <label for="f-desc">O que se passa com o carro <span class="opt">opcional</span></label>
         <textarea id="f-desc" enterkeyhint="done" placeholder="Que ruído faz, quando acontece, se há luzes acesas. Quanto mais detalhe, melhor preparamos o trabalho."></textarea>
       </div>
 
@@ -189,11 +170,11 @@ function enviarPedido(){
     el.focus(); el.scrollIntoView({behavior:'smooth', block:'center'});
   };
 
-  var nome = v('f-nome'), viatura = v('f-viatura'), matricula = v('f-matricula');
-  if(!nome)    return falhar('Falta o nome.', 'f-nome');
-  if(!viatura) return falhar('Falta dizer que carro é. Marca, modelo e ano chegam.', 'f-viatura');
-  if(matricula && !matriculaValida(matricula))
-    return falhar('A matrícula não está num formato português. Ex: AA-00-AA. Se não souber, deixe em branco.', 'f-matricula');
+  var nome = v('f-nome'), matricula = v('f-matricula');
+  if(!nome)      return falhar('Falta o nome.', 'f-nome');
+  if(!matricula) return falhar('Falta a matrícula. É por ela que identificamos o carro.', 'f-matricula');
+  if(!matriculaValida(matricula))
+    return falhar('A matrícula não está num formato português. Ex: AA-00-AA.', 'f-matricula');
 
   var recolha = document.getElementById('f-recolha').selectedIndex === 1;
   var morada = v('f-morada');
@@ -202,19 +183,13 @@ function enviarPedido(){
   err.hidden = true;
 
   var dia = v('f-dia');
-  if(dia){
-    var d = dia.split('-');
-    dia = d[2] + '/' + d[1] + '/' + d[0];
-    var per = v('f-periodo');
-    if(per && per !== 'Indiferente') dia += ', ' + per.toLowerCase();
-  }
+  if(dia){ var d = dia.split('-'); dia = d[2] + '/' + d[1] + '/' + d[0]; }
 
   var linhas = [
     'Pedido de marcação · NeNeTorque', '',
     'Nome: ' + nome,
-    'Viatura: ' + viatura
+    'Matrícula: ' + matricula
   ];
-  if(matricula) linhas.push('Matrícula: ' + matricula);
   linhas.push('Serviço: ' + v('f-servico'));
   linhas.push('Quando dá jeito: ' + (dia || 'Não indicado'));
   linhas.push('Recolha: ' + (recolha ? 'Sim, em ' + morada : 'Não, leva o carro à oficina'));
