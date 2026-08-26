@@ -107,13 +107,13 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 
 /* ---------- campaign band ---------- */
 .band{background:var(--teal);color:var(--paper)}
-.band .eyebrow{opacity:.75}
+.band .eyebrow{opacity:.88}
 .fee{font-family:var(--mono);font-size:clamp(3rem,11vw,5.2rem);font-weight:600;line-height:1;margin:6px 0 18px}
 .fee-table{margin-top:30px;border-top:1px solid var(--line-dark);max-width:520px}
 .fee-table div{display:flex;align-items:baseline;gap:18px;padding:13px 0;border-bottom:1px solid var(--line-dark)}
 .fee-v{font-family:var(--mono);font-weight:600;font-size:1.25rem;min-width:64px}
 .fee-table span:last-child{font-size:.96rem;opacity:.85}
-.fee-foot{margin-top:18px;font-size:.9rem;opacity:.72}
+.fee-foot{margin-top:18px;font-size:.9rem;opacity:.88}
 
 /* ---------- service-area map ---------- */
 .areas.small{margin-top:16px}
@@ -209,7 +209,7 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 /* o seletor de data do telemovel vem com aspeto proprio: uniformiza-se aqui */
 .field input[type=date]{min-height:52px;color-scheme:dark;-webkit-text-fill-color:var(--paper)}
 .field input[type=date]::-webkit-datetime-edit{color:var(--paper)}
-.field input[type=date].vazio::-webkit-datetime-edit{opacity:.45}
+.field input[type=date].vazio::-webkit-datetime-edit{opacity:.58}
 .field input[type=date]::-webkit-calendar-picker-indicator{opacity:.65;cursor:pointer}
 .phead-sub{margin-top:14px;font-size:1rem;opacity:.8;max-width:40ch}
 /* paginas onde so faz sentido uma acao: a chamada ocupa a barra toda */
@@ -251,6 +251,9 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 .cols p{margin-top:9px;opacity:.85;font-size:.98rem}
 .areas{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
 .areas li{list-style:none;font-family:var(--mono);font-size:.83rem;border:1px solid var(--line);padding:7px 13px;border-radius:2px}
+/* enquanto nao houver fotografias, o bloco tracejado nao vai para o publico */
+.photo.por-fazer{display:none}
+@media(min-width:820px){.cols.cols-1{grid-template-columns:1fr}}
 .photo{
   border:2px dashed var(--amber);background:rgba(232,120,28,.06);aspect-ratio:4/3;
   display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;
