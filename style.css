@@ -197,6 +197,20 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 @media(min-width:620px){.two{grid-template-columns:1fr 1fr}}
 .book-err{color:var(--amber);font-size:.9rem;margin-top:10px;font-weight:600}
 .book-alt{font-size:.88rem;opacity:.7;margin-top:14px}
+.book-enviar{width:100%;margin-top:20px}
+/* em computador a coluna de contexto fica a esquerda, como sempre esteve.
+   em telemovel nao se aplica e o formulario fica primeiro, que e a ordem do DOM */
+@media(min-width:900px){.book-info{order:-1}}
+.field .opt{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;opacity:.6;
+  border:1px solid var(--line-dark);border-radius:2px;padding:2px 6px;margin-left:8px;
+}
+.field .ajuda{font-size:.82rem;opacity:.6;margin-top:7px;line-height:1.45}
+/* o seletor de data do telemovel vem com aspeto proprio: uniformiza-se aqui */
+.field input[type=date]{min-height:52px;color-scheme:dark}
+.phead-sub{margin-top:14px;font-size:1rem;opacity:.8;max-width:40ch}
+/* paginas onde so faz sentido uma acao: a chamada ocupa a barra toda */
+.callbar-so .c1{flex:1}
 
 /* ---------- generic columns / areas / photos ---------- */
 .cols{display:grid;gap:34px;margin-top:34px}
@@ -353,7 +367,13 @@ footer a{color:var(--amber)}
   .svc-note{margin-top:30px;font-size:.95rem;padding:17px 18px}
 
   /* ---- marcações ---- */
-  .book-grid{gap:40px}
+  /* cabeçalho curto: quem toca em Marcações quer o formulário, não o discurso */
+  .phead-curto{padding:32px 0 30px}
+  .phead-curto h1{font-size:1.95rem}
+  .phead-sub{font-size:.95rem;margin-top:10px}
+  .book{padding-top:30px}
+  .book-grid{gap:44px}
+  .book-info{border-top:1px solid var(--line-dark);padding-top:32px}
   .field{margin-bottom:20px}
   .field label{font-size:.7rem;margin-bottom:9px}
   .field input,.field select,.field textarea{font-size:1rem;padding:15px 14px}

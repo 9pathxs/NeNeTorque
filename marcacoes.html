@@ -38,16 +38,94 @@
   </nav>
 </header>
 
-<div class="phead" style="padding-bottom:10px">
+<div class="phead phead-curto">
   <div class="wrap">
     <span class="eyebrow">Marcações</span>
     <h1 style="font-size:clamp(1.9rem,6vw,3.2rem)">Marque sem telefonar</h1>
+    <p class="phead-sub">Menos de um minuto. Nada fica marcado até falarmos consigo.</p>
   </div>
 </div>
 
 <section class="book" style="padding-top:38px">
   <div class="wrap book-grid">
-    <div>
+
+    <div class="book-form">
+      <div class="field">
+        <label for="f-nome">Nome</label>
+        <input id="f-nome" type="text" placeholder="Como se chama"
+               autocomplete="name" autocapitalize="words" enterkeyhint="next">
+      </div>
+
+      <div class="field">
+        <label for="f-viatura">Viatura</label>
+        <input id="f-viatura" type="text" placeholder="Marca, modelo e ano. Ex: Renault Clio 2016"
+               autocapitalize="words" enterkeyhint="next">
+      </div>
+
+      <div class="field">
+        <label for="f-matricula">Matrícula <span class="opt">opcional</span></label>
+        <input id="f-matricula" type="text" placeholder="AA-00-AA" maxlength="8"
+               autocapitalize="characters" autocomplete="off" spellcheck="false" enterkeyhint="next"
+               oninput="formatarMatricula(this)">
+        <p class="ajuda">Se souber de cor. Ajuda-nos a preparar o trabalho antes de chegar.</p>
+      </div>
+
+      <div class="field">
+        <label for="f-servico">Serviço</label>
+        <select id="f-servico">
+          <option>Não sei, preciso que vejam</option>
+          <option>Diagnóstico de avarias</option>
+          <option>Revisão ou mecânica geral</option>
+          <option>Eletricidade e eletrónica</option>
+          <option>Travões</option>
+          <option>Pneus e equilibragem</option>
+          <option>Distribuição</option>
+        </select>
+      </div>
+
+      <div class="two">
+        <div class="field">
+          <label for="f-dia">Que dia lhe dá jeito</label>
+          <input id="f-dia" type="date">
+        </div>
+        <div class="field">
+          <label for="f-periodo">Altura do dia</label>
+          <select id="f-periodo">
+            <option>Indiferente</option>
+            <option>Manhã</option>
+            <option>Tarde</option>
+            <option>Fim do dia</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-desc">O que se passa com o carro</label>
+        <textarea id="f-desc" enterkeyhint="done" placeholder="Que ruído faz, quando acontece, se há luzes acesas. Quanto mais detalhe, melhor preparamos o trabalho."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="f-recolha">Precisa que vamos buscar o carro?</label>
+        <select id="f-recolha" onchange="alternarMorada()">
+          <option>Não, levo o carro à oficina</option>
+          <option>Sim, com recolha e entrega</option>
+        </select>
+      </div>
+
+      <div class="field" id="campo-morada" hidden>
+        <label for="f-morada">Onde vamos buscar o carro</label>
+        <input id="f-morada" type="text" placeholder="Rua e localidade"
+               autocomplete="street-address" autocapitalize="words" enterkeyhint="done">
+        <p class="ajuda">15 € em Gondomar, 25 € nas restantes zonas. Cobrado à parte da reparação.</p>
+      </div>
+
+      <button class="btn btn-primary book-enviar" onclick="enviarPedido()">Continuar no WhatsApp</button>
+      <div class="book-err" id="f-err" hidden></div>
+      <p class="book-alt">Abre o WhatsApp com a mensagem já escrita. Só sai quando for o próprio a enviar. <a href="privacidade" style="color:var(--amber)">Como tratamos os seus dados</a>.</p>
+      <p class="book-alt">Prefere email? <a href="mailto:geral@nenetorque.pt" style="color:var(--amber)">geral@nenetorque.pt</a></p>
+    </div>
+
+    <div class="book-info">
       <span class="eyebrow">O que acontece a seguir</span>
       <h2 style="font-size:clamp(1.4rem,4vw,1.9rem)">Sem compromisso</h2>
       <p style="opacity:.85;font-size:.98rem;margin-top:10px">Recebemos o pedido, vemos se é caso para diagnóstico ou se dá para resolver logo, e ligamos-lhe com uma data. Nada é marcado até falar connosco.</p>
@@ -60,60 +138,6 @@
       <p style="margin-top:22px;font-size:.92rem;opacity:.72">Respondemos assim que estivermos livres. Se for urgente, ligue para <a href="tel:+351934186655" style="color:var(--amber)">934 186 655</a>.</p>
     </div>
 
-    <div>
-      <div class="two">
-        <div class="field">
-          <label for="f-nome">Nome</label>
-          <input id="f-nome" type="text" placeholder="Como se chama">
-        </div>
-        <div class="field">
-          <label for="f-tel">Telefone</label>
-          <input id="f-tel" type="tel" placeholder="Para lhe ligarmos de volta">
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="f-viatura">Viatura</label>
-        <input id="f-viatura" type="text" placeholder="Marca, modelo e ano. Ex: Renault Clio 2016">
-      </div>
-
-      <div class="two">
-        <div class="field">
-          <label for="f-servico">Serviço</label>
-          <select id="f-servico">
-            <option>Diagnóstico de avarias</option>
-            <option>Revisão ou mecânica geral</option>
-            <option>Eletricidade e eletrónica</option>
-            <option>Travões</option>
-            <option>Pneus e equilibragem</option>
-            <option>Distribuição</option>
-            <option>Não sei, preciso que vejam</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="f-disp">Quando lhe dá jeito</label>
-          <input id="f-disp" type="text" placeholder="Ex: sábado de manhã">
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="f-desc">O que se passa com o carro</label>
-        <textarea id="f-desc" placeholder="Descreva o sintoma: quando acontece, que ruído faz, se há luzes acesas. Quanto mais detalhe, melhor preparamos a marcação."></textarea>
-      </div>
-
-      <div class="field" style="margin-bottom:8px">
-        <label for="f-recolha">Precisa de recolha da viatura?</label>
-        <select id="f-recolha">
-          <option>Não, levo o carro à oficina</option>
-          <option>Sim, com recolha e entrega</option>
-        </select>
-      </div>
-
-      <button class="btn btn-primary" style="width:100%;margin-top:14px" onclick="enviarPedido()">Enviar pedido por WhatsApp</button>
-      <div class="book-err" id="f-err" hidden></div>
-      <p class="book-alt" style="margin-top:10px">Os dados que escrever ficam no seu equipamento até carregar em enviar. Saiba <a href="privacidade" style="color:var(--amber)">como tratamos os seus dados</a>.</p>
-      <p class="book-alt">Prefere email? <a href="mailto:geral@nenetorque.pt" style="color:var(--amber)">geral@nenetorque.pt</a></p>
-    </div>
   </div>
 </section>
 
@@ -124,36 +148,86 @@
   </div>
 </footer>
 
-<nav class="callbar" aria-label="Contacto rápido">
-  <a class="c1" href="tel:+351934186655">Ligar</a>
-  <a class="c2" href="./">Início</a>
+<nav class="callbar callbar-so" aria-label="Contacto rápido">
+  <a class="c1" href="tel:+351934186655">Ligar 934 186 655</a>
 </nav>
 
 <script>
+/* ---------- matricula ----------
+   Quatro formatos em circulacao em Portugal, do mais antigo para o atual:
+   AA-00-00 · 00-00-AA · 00-AA-00 · AA-00-AA                                  */
+var FORMATOS = [
+  /^[A-Z]{2}-\d{2}-\d{2}$/,
+  /^\d{2}-\d{2}-[A-Z]{2}$/,
+  /^\d{2}-[A-Z]{2}-\d{2}$/,
+  /^[A-Z]{2}-\d{2}-[A-Z]{2}$/
+];
+
+function formatarMatricula(el){
+  var v = el.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+  var p = [];
+  for (var i = 0; i < v.length; i += 2) p.push(v.slice(i, i + 2));
+  el.value = p.join('-');
+}
+
+function matriculaValida(v){
+  for (var i = 0; i < FORMATOS.length; i++) if (FORMATOS[i].test(v)) return true;
+  return false;
+}
+
+function alternarMorada(){
+  var quer = document.getElementById('f-recolha').selectedIndex === 1;
+  document.getElementById('campo-morada').hidden = !quer;
+}
+
 function enviarPedido(){
   var v = function(id){ return document.getElementById(id).value.trim(); };
   var err = document.getElementById('f-err');
-  var nome = v('f-nome'), tel = v('f-tel'), viatura = v('f-viatura');
+  var falhar = function(msg, foco){
+    err.textContent = msg; err.hidden = false;
+    var el = document.getElementById(foco);
+    el.focus(); el.scrollIntoView({behavior:'smooth', block:'center'});
+  };
 
-  if(!nome || !tel || !viatura){
-    err.textContent = 'Falta o nome, o telefone ou a viatura.';
-    err.hidden = false;
-    return;
-  }
+  var nome = v('f-nome'), viatura = v('f-viatura'), matricula = v('f-matricula');
+  if(!nome)    return falhar('Falta o nome.', 'f-nome');
+  if(!viatura) return falhar('Falta dizer que carro é. Marca, modelo e ano chegam.', 'f-viatura');
+  if(matricula && !matriculaValida(matricula))
+    return falhar('A matrícula não está num formato português. Ex: AA-00-AA. Se não souber, deixe em branco.', 'f-matricula');
+
+  var recolha = document.getElementById('f-recolha').selectedIndex === 1;
+  var morada = v('f-morada');
+  if(recolha && !morada) return falhar('Diga-nos onde vamos buscar o carro.', 'f-morada');
+
   err.hidden = true;
 
-  var txt =
-    'Pedido de marcação · NeNeTorque\n\n' +
-    'Nome: ' + nome + '\n' +
-    'Telefone: ' + tel + '\n' +
-    'Viatura: ' + viatura + '\n' +
-    'Serviço: ' + v('f-servico') + '\n' +
-    'Disponibilidade: ' + (v('f-disp') || 'Não indicado') + '\n' +
-    'Recolha: ' + v('f-recolha') + '\n\n' +
-    'Descrição:\n' + (v('f-desc') || 'Não indicado');
+  var dia = v('f-dia');
+  if(dia){
+    var d = dia.split('-');
+    dia = d[2] + '/' + d[1] + '/' + d[0];
+    var per = v('f-periodo');
+    if(per && per !== 'Indiferente') dia += ', ' + per.toLowerCase();
+  }
 
-  window.open('https://wa.me/351934186655?text=' + encodeURIComponent(txt), '_blank');
+  var linhas = [
+    'Pedido de marcação · NeNeTorque', '',
+    'Nome: ' + nome,
+    'Viatura: ' + viatura
+  ];
+  if(matricula) linhas.push('Matrícula: ' + matricula);
+  linhas.push('Serviço: ' + v('f-servico'));
+  linhas.push('Quando dá jeito: ' + (dia || 'Não indicado'));
+  linhas.push('Recolha: ' + (recolha ? 'Sim, em ' + morada : 'Não, leva o carro à oficina'));
+  linhas.push('', 'Descrição:', v('f-desc') || 'Não indicado');
+
+  window.open('https://wa.me/351934186655?text=' + encodeURIComponent(linhas.join('\n')), '_blank');
 }
+
+/* nao deixa escolher um dia que ja passou */
+(function(){
+  var d = document.getElementById('f-dia');
+  if(d) d.min = new Date(Date.now() - new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
+})();
 </script>
 
 <script src="app.js"></script>
