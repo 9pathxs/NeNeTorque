@@ -107,9 +107,11 @@
     </div>
 
     <div class="book-info">
-      <span class="eyebrow">O que acontece a seguir</span>
-      <h2 style="font-size:clamp(1.4rem,4vw,1.9rem)">Sem compromisso</h2>
-      <p style="opacity:.85;font-size:.98rem;margin-top:10px">Recebemos o pedido, vemos se é caso para diagnóstico ou se dá para resolver logo, e ligamos-lhe com uma data. Nada é marcado até falar connosco.</p>
+      <div class="book-contexto">
+        <span class="eyebrow">O que acontece a seguir</span>
+        <h2 style="font-size:clamp(1.4rem,4vw,1.9rem)">Sem compromisso</h2>
+        <p style="opacity:.85;font-size:.98rem;margin-top:10px">Recebemos o pedido, vemos se é caso para diagnóstico ou se dá para resolver logo, e ligamos-lhe com uma data. Nada é marcado até falar connosco.</p>
+      </div>
 
       <div class="hours" style="border-top:1px solid var(--line-dark);padding-top:18px;margin-top:26px">
         <div style="border-color:var(--line-dark)"><span>Segunda a sábado</span><span>9h às 21h</span></div>
@@ -201,7 +203,11 @@ function enviarPedido(){
 /* nao deixa escolher um dia que ja passou */
 (function(){
   var d = document.getElementById('f-dia');
-  if(d) d.min = new Date(Date.now() - new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
+  if(!d) return;
+  d.min = new Date(Date.now() - new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
+  /* marca o campo como vazio, para o dd/mm/aaaa ficar mais claro que um valor real */
+  var marcar = function(){ d.classList.toggle('vazio', !d.value); };
+  d.addEventListener('change', marcar); d.addEventListener('input', marcar); marcar();
 })();
 </script>
 

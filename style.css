@@ -207,7 +207,10 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 }
 .field .ajuda{font-size:.82rem;opacity:.6;margin-top:7px;line-height:1.45}
 /* o seletor de data do telemovel vem com aspeto proprio: uniformiza-se aqui */
-.field input[type=date]{min-height:52px;color-scheme:dark}
+.field input[type=date]{min-height:52px;color-scheme:dark;-webkit-text-fill-color:var(--paper)}
+.field input[type=date]::-webkit-datetime-edit{color:var(--paper)}
+.field input[type=date].vazio::-webkit-datetime-edit{opacity:.45}
+.field input[type=date]::-webkit-calendar-picker-indicator{opacity:.65;cursor:pointer}
 .phead-sub{margin-top:14px;font-size:1rem;opacity:.8;max-width:40ch}
 /* paginas onde so faz sentido uma acao: a chamada ocupa a barra toda */
 .callbar-so .c1{flex:1}
@@ -220,24 +223,26 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 @media(min-width:820px){
   .so-tel{display:none}
   .so-pc{display:inline-flex}
-  p.so-pc{display:block}
+  p.so-pc,div.so-pc{display:block}
   .promove{background:var(--amber);color:var(--ink);border-color:transparent}
   .promove:hover{background:#f5871f}
   .contact a.tel{font-size:2.9rem}
 }
 .btn-ghost.escuro{color:var(--ink)}
-.tel-lado{margin-top:18px;font-family:var(--mono);font-size:.95rem;opacity:.7}
-.tel-lado a{font-size:1.3rem;font-weight:600;color:var(--amber);text-decoration:none;margin-left:6px}
-.contact .tel-lado a{color:var(--teal)}
+/* em computador a chamada e o numero, nao um botao que nao liga a ninguem */
+.chamada{margin-top:36px}
+.tel-destaque{
+  font-family:var(--mono);font-size:clamp(2.2rem,4.4vw,3.4rem);font-weight:600;line-height:1;
+  color:var(--amber);text-decoration:none;display:inline-block;
+}
+.tel-destaque:hover{text-decoration:underline;text-underline-offset:7px}
+.chamada-alt{margin-top:16px;font-size:.98rem;opacity:.75}
+.chamada-alt a{color:inherit;text-underline-offset:4px}
 
-/* coluna dos contactos: o horario encosta ao fundo, ao nivel do mapa,
-   e o que esta pelo meio respira mais, para o vazio nao ficar todo num sitio */
 @media(min-width:820px){
-  .contact .cols>div:first-child{display:flex;flex-direction:column}
   .contact .cols .lede{margin-bottom:4px}
-  .contact a.tel{margin:30px 0 10px}
-  .contact .cols .btn-row{margin-top:34px}
-  .contact .cols .hours{margin-top:auto;padding-top:26px}
+  .contact a.tel{margin:26px 0 8px}
+  .contact .cols .hours{margin-top:30px}
 }
 
 /* ---------- generic columns / areas / photos ---------- */
@@ -401,6 +406,9 @@ footer a{color:var(--amber)}
   .book{padding-top:20px;padding-bottom:46px}
   .book-grid{gap:34px}
   .book-info{border-top:1px solid var(--line-dark);padding-top:26px}
+  /* em telemovel o texto de contexto e so mais scroll: fica o horario */
+  .book-contexto{display:none}
+  .book-info .hours{margin-top:0;border-top:none;padding-top:0}
   .book-enviar{margin-top:24px}
   .book-alt{font-size:.88rem;margin-top:12px}
   .book-info h2{margin-bottom:8px}
