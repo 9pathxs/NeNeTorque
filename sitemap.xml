@@ -16,4 +16,8 @@
     <loc>https://nenetorque.pt/quem-somos.html</loc>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://nenetorque.pt/privacidade.html</loc>
+    <priority>0.3</priority>
+  </url>
 </urlset>
