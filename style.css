@@ -247,22 +247,41 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
   p.so-pc,div.so-pc{display:block}
   .promove{background:var(--amber);color:var(--ink);border-color:transparent}
   .promove:hover{background:#f5871f}
-  .contact a.tel{font-size:2.9rem}
   .contact .email-grande{font-size:clamp(1.05rem,2.95vw,2.2rem)}
 }
 .btn-ghost.escuro{color:var(--ink)}
-/* em computador a chamada e o numero, nao um botao que nao liga a ninguem */
+/* ---------- bloco de telefone, so em computador ----------
+   etiqueta + filete + numero. Nao e clicavel de proposito: num portatil
+   ninguem liga a partir do sitio, por isso o numero e informacao e nao
+   um botao que nao leva a lado nenhum. Fica em mono, como os 40 EUR da
+   banda, e seleciona-se de uma vez para quem quer copiar. */
 .chamada{margin-top:36px}
-.tel-destaque{
-  font-family:var(--mono);font-size:clamp(2.2rem,4.4vw,3.4rem);font-weight:600;line-height:1;
-  color:var(--amber);text-decoration:none;display:inline-block;
+/* sem display: a div ja e bloco, e assim o .so-pc{display:none} do telemovel
+   nao e atropelado por esta regra, que vem depois no ficheiro */
+.chamada-bloco{width:fit-content;border-top:2px solid var(--amber);padding-top:14px}
+.chamada-et{
+  font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--amber);display:block;margin-bottom:9px;
 }
-.tel-destaque.escuro{color:var(--teal)}
-.chamada-btn{margin-top:22px}
+.chamada-num{
+  font-family:var(--mono);font-size:clamp(2.2rem,4.4vw,3.4rem);font-weight:600;line-height:1;
+  color:var(--amber);display:block;font-variant-numeric:tabular-nums;
+  -webkit-user-select:all;user-select:all;cursor:text;
+}
+.chamada-meta{font-family:var(--mono);font-size:.78rem;line-height:1.6;opacity:.6;margin-top:13px}
+/* sobre fundo claro */
+.chamada-bloco.escuro{border-top-color:var(--teal)}
+.chamada-bloco.escuro .chamada-et,.chamada-bloco.escuro .chamada-num{color:var(--teal)}
+.chamada-btn{margin-top:24px}
+/* nos contactos o bloco vive dentro de uma coluna: um ponto mais pequeno */
+.contact .chamada-bloco{margin:24px 0 10px}
+.contact .chamada-num{font-size:2.8rem}
+/* no fecho da pagina e o maior numero da pagina, e fica centrado */
+.cta .chamada-bloco{margin:30px auto 0}
+.cta .chamada-num{font-size:clamp(2.4rem,5.2vw,3.9rem)}
 
 @media(min-width:820px){
   .contact .cols .lede{margin-bottom:4px}
-  .contact a.tel{margin:26px 0 8px}
   .contact .cols .hours{margin-top:30px}
 }
 
