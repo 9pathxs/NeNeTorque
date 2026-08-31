@@ -169,6 +169,27 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
 .svc-block li::before{content:"";position:absolute;left:0;top:.6em;width:9px;height:2px;background:var(--amber)}
 .svc-note{margin-top:30px;padding:16px 18px;background:rgba(16,101,106,.09);border-left:3px solid var(--teal);font-size:.95rem}
 
+/* ---------- cartao de preco em fundo claro ----------
+   mesmo desenho da banda dos 40 €, adaptado ao papel. Sem ambar: nao e CTA. */
+.preco{
+  margin-top:26px;border:1px solid var(--line);background:rgba(16,101,106,.06);
+  padding:22px 22px 18px;max-width:520px;
+}
+.preco-v{
+  font-family:var(--mono);font-size:clamp(2.1rem,6vw,2.9rem);font-weight:600;
+  line-height:1;color:var(--teal);
+}
+.preco-linhas{margin-top:20px;border-top:1px solid var(--line)}
+.preco-linhas>div{
+  display:flex;align-items:baseline;gap:16px;padding:12px 0;
+  border-bottom:1px solid var(--line);
+}
+.preco-n{font-family:var(--mono);font-weight:600;font-size:1.1rem;min-width:56px;color:var(--teal)}
+.preco-linhas span:last-child{font-size:.95rem;opacity:.85}
+.preco-nota{margin-top:14px;font-size:.92rem;opacity:.85}
+.preco-nota+.preco-nota{margin-top:8px}
+.svc-fecho{margin-top:18px}
+
 /* ---------- dark section variant ---------- */
 .sec-dark{background:var(--deep);color:var(--paper)}
 .sec-dark .steps{background:var(--line-dark)}
@@ -224,7 +245,7 @@ h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em}
    por isso desenhamos a dica e escondemo-la assim que houver data escolhida */
 .dica-data{
   position:absolute;left:15px;top:50%;transform:translateY(-50%);pointer-events:none;
-  font-family:var(--display);font-size:1rem;color:rgba(244,242,237,.5);
+  font-family:var(--display);font-size:1rem;color:rgba(244,242,237,.62);
 }
 .field input[type=date]:not(.vazio)+.dica-data{display:none}
 .field input[type=date].vazio{-webkit-text-fill-color:transparent;color:transparent}
@@ -450,6 +471,10 @@ footer a{color:var(--amber)}
   .svc-block ul{margin-top:18px;gap:10px}
   .svc-block li{font-size:.97rem;padding-left:22px}
   .svc-note{margin-top:30px;font-size:.95rem;padding:17px 18px}
+  .preco{padding:18px 17px 15px;margin-top:22px}
+  .preco-linhas>div{gap:13px;padding:11px 0}
+  .preco-n{font-size:1.05rem;min-width:50px}
+  .preco-linhas span:last-child{font-size:.92rem}
 
   /* ---- marcações ---- */
   /* cabeçalho curto: quem toca em Marcações quer o formulário, não o discurso */
